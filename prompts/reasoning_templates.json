@@ -1,0 +1,102 @@
+{
+  "system_prompt": "You are an expert Go/Golang developer. You always think through problems step-by-step, explaining your reasoning before writing code. You write clean, efficient, and idiomatic Go code.",
+  "categories": [
+    {
+      "name": "problem_decomposition",
+      "description": "Break down complex Go problems into smaller sub-tasks",
+      "prompts": [
+        "Design a concurrent web scraper in Go that respects rate limits and handles retries.",
+        "Build a Go service that aggregates real-time price data from multiple WebSocket feeds.",
+        "Implement a task scheduler in Go that supports priority queues and worker pools.",
+        "Design a Go middleware chain for an HTTP server with logging, auth, rate limiting, and CORS.",
+        "Build a Go CLI tool that watches a directory for file changes and triggers rebuild commands.",
+        "Implement a connection pool manager in Go with health checks and automatic reconnection.",
+        "Design a Go event sourcing system with snapshots and replay capability.",
+        "Build a distributed lock service in Go using Redis or etcd.",
+        "Implement a Go reverse proxy that load balances across multiple backends with health checks.",
+        "Design a Go pipeline for processing large CSV files concurrently with error collection."
+      ]
+    },
+    {
+      "name": "step_by_step_explanation",
+      "description": "Explain Go patterns and decisions with reasoning",
+      "prompts": [
+        "Explain step by step how to implement graceful shutdown in a Go HTTP server.",
+        "Walk through implementing the fan-out/fan-in concurrency pattern in Go.",
+        "Explain how to properly handle context cancellation and timeouts in Go.",
+        "Step by step, implement a thread-safe LRU cache in Go.",
+        "Explain the decision process for choosing between sync.Mutex vs channels in Go.",
+        "Walk through implementing the circuit breaker pattern in Go for external API calls.",
+        "Explain step by step how Go's garbage collector works and how to optimize for it.",
+        "Walk through building a retry mechanism with exponential backoff in Go.",
+        "Explain the trade-offs of using Go generics vs interfaces for a collection library.",
+        "Step by step, implement proper database transaction handling with rollback in Go."
+      ]
+    },
+    {
+      "name": "architecture_design",
+      "description": "Design decisions and architectural reasoning for Go projects",
+      "prompts": [
+        "Design the architecture for a Go microservice that handles user authentication with JWT.",
+        "How would you structure a Go project that needs both REST and gRPC endpoints?",
+        "Design a Go application that needs to process 10,000 messages per second from Kafka.",
+        "What's the best way to structure error handling across a large Go codebase?",
+        "Design a Go caching layer that supports multiple backends (Redis, Memcached, in-memory).",
+        "How would you implement feature flags in a Go application without external dependencies?",
+        "Design a Go logging system that supports structured logging with different output formats.",
+        "How would you architect a Go application for horizontal scaling with shared state?",
+        "Design a Go API gateway that handles routing, authentication, and rate limiting.",
+        "How would you structure a Go monorepo with shared libraries and multiple services?"
+      ]
+    },
+    {
+      "name": "code_analysis",
+      "description": "Analyze and explain existing Go code patterns",
+      "prompts": [
+        "Analyze this Go code pattern: using a struct with unexported fields and a constructor function. Why is this preferred?",
+        "Why does Go use `defer` for resource cleanup instead of try/finally? Explain the design reasoning.",
+        "Explain why this Go code uses `select` with a `default` case for non-blocking channel operations.",
+        "Analyze the pros and cons of using Go's `embed` package vs loading files at runtime.",
+        "Why does the Go standard library use the `io.Reader` and `io.Writer` interfaces so extensively?",
+        "Explain the reasoning behind Go's error handling philosophy compared to exceptions.",
+        "Analyze when to use `sync.Pool` in Go and why it improves performance for certain workloads.",
+        "Why does Go's `context` package exist? Explain the problems it solves with concrete examples.",
+        "Analyze the trade-offs of using pointer vs value receivers on Go methods.",
+        "Explain why Go channels are preferred over shared memory for goroutine communication."
+      ]
+    },
+    {
+      "name": "performance_reasoning",
+      "description": "Reason about Go performance optimizations",
+      "prompts": [
+        "A Go HTTP handler is slow under load. Walk through how you would profile and optimize it.",
+        "Explain how to reduce memory allocations in a hot path of a Go application.",
+        "When should you use `sync.Pool` vs creating new objects in Go? Reason through the trade-offs.",
+        "How would you optimize a Go function that processes millions of strings for memory efficiency?",
+        "Explain the performance implications of slice growth in Go and how to avoid excessive copying.",
+        "Walk through optimizing a Go application that makes many concurrent HTTP requests.",
+        "How would you reduce GC pressure in a high-throughput Go service?",
+        "Analyze the performance difference between `map[string]interface{}` and a typed struct in Go.",
+        "When should you use buffered vs unbuffered channels in Go? Reason about throughput.",
+        "Explain how to use Go's `pprof` to find and fix a memory leak."
+      ]
+    },
+    {
+      "name": "concurrency_reasoning",
+      "description": "Deep reasoning about Go concurrency patterns",
+      "prompts": [
+        "Design a worker pool in Go that can dynamically scale based on queue depth.",
+        "Explain how to prevent goroutine leaks when using context cancellation.",
+        "Walk through implementing a pub/sub system using Go channels.",
+        "How would you implement a rate limiter that allows burst traffic in Go?",
+        "Design a Go pipeline that processes data through multiple stages with backpressure.",
+        "Explain the dining philosophers problem and solve it idiomatically in Go.",
+        "How would you implement a concurrent map with fine-grained locking in Go?",
+        "Walk through implementing a semaphore pattern in Go using channels.",
+        "Design a Go system that coordinates multiple goroutines to complete a task with partial failures.",
+        "Explain how to use errgroup for managing concurrent operations with proper error handling in Go."
+      ]
+    }
+  ],
+  "generation_instruction": "For each prompt, generate a response that: 1) Breaks down the problem into clear steps, 2) Explains the WHY behind each decision, 3) Provides working Go code, 4) Mentions potential pitfalls or alternatives. Response should be 300-800 words."
+}

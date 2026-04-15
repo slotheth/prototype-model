@@ -1,0 +1,34 @@
+# PyTorch with CUDA 12.1 support
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch
+torchvision
+
+# Unsloth for efficient fine-tuning
+unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git
+
+# TRL (Transformer Reinforcement Learning)
+trl>=0.18.2,<0.25.0
+
+# PEFT (Parameter-Efficient Fine-Tuning)
+peft
+
+# Accelerate for distributed training
+accelerate
+
+# BitsAndBytes for 4-bit quantization
+bitsandbytes
+
+# xformers for memory-efficient attention
+xformers==0.0.27.post2
+
+# torchao (older version for Windows compatibility)
+torchao==0.7.0
+
+# Setuptools (required for unsloth build)
+setuptools==80.9.0
+
+# Datasets for loading Magicoder
+datasets
+
+# Environment variable management
+python-dotenv

@@ -1,0 +1,94 @@
+{
+  "system_prompt": "You are an expert Go/Golang developer. When reviewing code, you identify bugs clearly, explain why they are problematic, and provide corrected versions with best practices.",
+  "categories": [
+    {
+      "name": "nil_pointer",
+      "description": "Nil pointer dereference bugs",
+      "bug_patterns": [
+        "Accessing fields on a nil pointer returned from a function without error checking",
+        "Using type assertion without comma-ok pattern leading to nil panic",
+        "Dereferencing a pointer in a struct field without nil check",
+        "Calling methods on an interface value that might be nil",
+        "Accessing map values that return zero-value pointers"
+      ]
+    },
+    {
+      "name": "goroutine_leak",
+      "description": "Goroutine leak scenarios",
+      "bug_patterns": [
+        "Goroutine blocked on channel send with no receiver",
+        "Goroutine in infinite loop without context cancellation check",
+        "Timer/ticker not stopped causing goroutine to never exit",
+        "HTTP request in goroutine without timeout or context",
+        "Goroutine waiting on WaitGroup that is never Done()"
+      ]
+    },
+    {
+      "name": "race_condition",
+      "description": "Data race and race condition bugs",
+      "bug_patterns": [
+        "Multiple goroutines writing to a shared map without synchronization",
+        "Reading and writing a shared variable without mutex protection",
+        "Closing a channel from multiple goroutines",
+        "Appending to a shared slice from concurrent goroutines",
+        "Using a shared counter without atomic operations"
+      ]
+    },
+    {
+      "name": "resource_leak",
+      "description": "Unclosed resources causing leaks",
+      "bug_patterns": [
+        "HTTP response body not closed after reading",
+        "File handle not closed in error paths",
+        "Database connection not returned to pool",
+        "TCP connection not closed on error",
+        "Context cancel function not called (defer missing)"
+      ]
+    },
+    {
+      "name": "error_handling",
+      "description": "Incorrect error handling patterns",
+      "bug_patterns": [
+        "Ignoring errors with blank identifier (_, _ = ...)",
+        "Wrapping errors without %w verb losing the error chain",
+        "Checking error string instead of using errors.Is/errors.As",
+        "Returning early without cleaning up resources on error",
+        "Shadowing err variable in nested scope causing wrong error to propagate"
+      ]
+    },
+    {
+      "name": "slice_map_pitfalls",
+      "description": "Common slice and map mistakes",
+      "bug_patterns": [
+        "Modifying a slice while iterating over it with range",
+        "Assuming slice append always modifies the original (capacity exceeded)",
+        "Using a map with struct pointer keys causing unexpected behavior",
+        "Not initializing a map before writing to it (nil map panic)",
+        "Taking address of range variable causing all pointers to point to last element"
+      ]
+    },
+    {
+      "name": "concurrency_mistakes",
+      "description": "Common concurrency anti-patterns",
+      "bug_patterns": [
+        "Using defer inside a for loop causing resource accumulation",
+        "WaitGroup Add() called inside goroutine instead of before",
+        "Missing default case in select causing unexpected blocking",
+        "Copying sync.Mutex by value instead of using pointer",
+        "Using time.Sleep for synchronization instead of proper primitives"
+      ]
+    },
+    {
+      "name": "api_misuse",
+      "description": "Misusing Go standard library APIs",
+      "bug_patterns": [
+        "Using json.Unmarshal with unexported struct fields",
+        "Creating HTTP client without timeout (uses no timeout by default)",
+        "Using fmt.Sprintf for building SQL queries (SQL injection)",
+        "Calling os.Exit in a function that should return an error",
+        "Using strings.Replace with n=-1 when strings.ReplaceAll exists"
+      ]
+    }
+  ],
+  "generation_instruction": "For each bug pattern: 1) Generate a realistic buggy code snippet (10-30 lines), 2) Ask the user to review and identify the bug, 3) In the response, clearly identify the bug with explanation of WHY it's dangerous, 4) Provide the corrected code with comments explaining the fix. Each example should be self-contained and realistic."
+}
